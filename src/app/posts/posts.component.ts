@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IPost } from '../_shared/models/post.model';
 import { PostService } from '../_shared/services/post.service';
 
 @Component({
@@ -7,12 +8,17 @@ import { PostService } from '../_shared/services/post.service';
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit {
+  public posts: IPost[] = [];
 
   constructor(
     private postsService: PostService
   ) { }
 
   ngOnInit(): void {
+    this.postsService.getAll().subscribe((response) => {
+      this.posts = response;
+    });
+
   }
 
 }
