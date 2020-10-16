@@ -7,7 +7,8 @@ import { PostsComponent } from './posts/posts.component';
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'posts', component: PostsComponent },
-  { path: 'post/:id', component: PostComponent }
+  { path: 'post/:id', component: PostComponent },
+  { path: 'admin', loadChildren: () => import('./_admin/admin.module').then(m => m.AdminModule) }
 ];
 
 @NgModule({
