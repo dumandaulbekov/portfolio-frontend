@@ -1,9 +1,22 @@
 <form [formGroup]="postForm" (ngSubmit)="submitPostForm()">
-    <input type="text" formControlName="title">
+    <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput type="text" formControlName="title">
+    </mat-form-field>
+    <br>
 
-    <input type="text" formControlName="image">
+    <mat-form-field>
+        <mat-label>Image</mat-label>
 
-    <input type="text" formControlName="content">
+        <textarea matInput #content formControlName="image"></textarea>
+    </mat-form-field>
+    <br>
 
-    <button mat-button type=" submit">Update</button>
+    <mat-form-field>
+        <mat-label>Content</mat-label>
+
+        <textarea matInput type="text" formControlName="content"></textarea>
+    </mat-form-field>
+
+    <button mat-button type="submit">Update</button>
 </form>
