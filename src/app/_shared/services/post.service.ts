@@ -13,7 +13,11 @@ export class PostService {
   ) { }
 
   public getAll(): Observable<IPost[]> {
-    return this.http.get<IPost[]>(`${environment.PHP_POST_API}/read.php`);
+    return this.http.get<IPost[]>(`${environment.PHP_POST_API}/getAll.php`);
+  }
+
+  public getById(id: number): Observable<IPost> {
+    return this.http.get<IPost>(`${environment.PHP_POST_API}/getById.php/?id=${id}`);
   }
 
   public create(body: IPost): Observable<IPost> {
@@ -21,7 +25,7 @@ export class PostService {
   }
 
   public update(body: IPost): Observable<IPost> {
-    return this.http.put<IPost>(`${environment.production}/update.php`, body);
+    return this.http.put<IPost>(`${environment.PHP_POST_API}/update.php`, body);
   }
 
   public delete(id: number): Observable<IPost> {

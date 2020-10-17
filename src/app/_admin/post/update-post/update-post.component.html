@@ -1,1 +1,9 @@
-<p>update-post works!</p>
+<form [formGroup]="postForm" (ngSubmit)="submitPostForm()">
+    <input type="text" formControlName="title">
+
+    <input type="text" formControlName="image">
+
+    <input type="text" formControlName="content">
+
+    <button mat-button type=" submit">Update</button>
+</form>

@@ -1,0 +1,25 @@
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Author</th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let post of posts; let idx = index">
+            <td>{{ idx + 1 }}</td>
+            <td>{{ post.title }}</td>
+            <td>{{ post.createdDate }}</td>
+            <td>{{ post.modifiedDate }}</td>
+            <td class="action">
+                <button mat-button [routerLink]="['/admin', 'update-post', post.id]">
+                    View
+                </button>
+                <button mat-button (click)="remove(post.id)">Remove</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
