@@ -1,22 +1,16 @@
-<div *ngIf="post$ | async as post; else loading">
-    <div class="post">
-        <div class="header">
-            <h1>{{ post.title }}</h1>
+<div *ngIf="post$ | async as post">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 mt-3">
+                <div>
+                    <p class="post-title">{{post.title}}</p>
+                    <small class="text-muted">Duman Daulbekov • {{post.modifiedDate}}</small>
+                </div>
 
-            <button routerLink="/" class="btn btn-link">Main</button>
-        </div>
-
-        <div class="info">
-            <small>{{ post.modifiedDate }}</small>
-        </div>
-
-        <div>
-            {{post.content}}
-            <!-- <quill-view-html [content]="post.content"></quill-view-html> -->
+                <div class="mt-3">{{post.content}}</div>
+                <div class="col-md-3"></div>
+            </div>
         </div>
     </div>
 </div>
-
-<ng-template #loading>
-    <p class="text-center">Loading...</p>
-</ng-template>
