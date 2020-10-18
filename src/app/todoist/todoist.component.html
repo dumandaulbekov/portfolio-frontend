@@ -1,0 +1,63 @@
+<div class="row  mt-5">
+    <div class="col-md-3">
+        <mat-selection-list [multiple]="false">
+            <mat-list-option>Показать в виде каленьдаря</mat-list-option>
+            <mat-list-option>Показать в виде доски</mat-list-option>
+        </mat-selection-list>
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-4">
+                <mat-card>
+                    <mat-card-title>Задачи</mat-card-title>
+                    <mat-selection-list [multiple]="false">
+                        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+                            [cdkDropListConnectedTo]="[testList, doneList]" (cdkDropListDropped)="drop($event)">
+                            <mat-list-option *ngFor="let item of todo" cdkDrag [value]="item">
+                                {{item}}
+                            </mat-list-option>
+
+                            <mat-card-subtitle align="end" class="mt-2 mb-0">
+                                <button mat-button>Добавить</button>
+                            </mat-card-subtitle>
+                        </div>
+                    </mat-selection-list>
+                </mat-card>
+            </div>
+
+            <div class="col-md-4">
+                <mat-card>
+                    <mat-card-title>В процессе</mat-card-title>
+
+                    <mat-selection-list [multiple]="false">
+                        <div cdkDropList #testList="cdkDropList" [cdkDropListData]="test"
+                            [cdkDropListConnectedTo]="[todoList, doneList]" (cdkDropListDropped)="drop($event)">
+                            <mat-list-option *ngFor="let item of test" cdkDrag [value]="item">
+                                {{item}}
+                            </mat-list-option>
+                        </div>
+                    </mat-selection-list>
+                </mat-card>
+            </div>
+
+            <div class="col-md-4">
+                <mat-card>
+                    <mat-card-title>Завершено</mat-card-title>
+
+                    <mat-selection-list #isDone>
+                        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+                            [cdkDropListConnectedTo]="[todoList, testList]" (cdkDropListDropped)="drop($event)">
+                            <mat-list-option *ngFor="let item of done" cdkDrag [value]="item" class="done">
+                                <s>{{item}}</s>
+                            </mat-list-option>
+
+                            <mat-card-subtitle align="end" class="mt-2 mb-0">
+                                <button mat-button>Завершить {{isDone.selectedOptions.selected.length}}</button>
+                            </mat-card-subtitle>
+                        </div>
+                    </mat-selection-list>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './posts/post/post.component';
+import { TodoistComponent } from './todoist/todoist.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { PostComponent } from './posts/post/post.component';
     AboutComponent,
     PostsComponent,
     PostComponent,
+    TodoistComponent,
   ],
   imports: [
     BrowserModule,

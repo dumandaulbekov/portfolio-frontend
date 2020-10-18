@@ -3,10 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { PostComponent } from './posts/post/post.component';
 import { PostsComponent } from './posts/posts.component';
+import { TodoistComponent } from './todoist/todoist.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'about', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
+  { path: 'todoist', component: TodoistComponent },
   { path: 'posts', component: PostsComponent },
   { path: 'post/:id', component: PostComponent },
   { path: 'admin', loadChildren: () => import('./_admin/admin.module').then(m => m.AdminModule) }
