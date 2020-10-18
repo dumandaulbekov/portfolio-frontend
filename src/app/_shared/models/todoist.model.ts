@@ -5,5 +5,5 @@ export interface ITodoist {
     modifiedDate: Date;
     scheduleDate: Date;
     isFinished: boolean;
-    isBoard: 'Todo' | 'Test' | 'Done';
+    boardType: 'todo' | 'test' | 'done';
 }

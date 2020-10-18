@@ -1,6 +1,9 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ITodoist } from '../_shared/models/todoist.model';
+import { TodoistService } from '../_shared/services/todoist.service';
+import { CreateTodoDialogComponent } from './create-todo-dialog/create-todo-dialog.component';
 
 @Component({
   selector: 'app-todoist',
@@ -23,7 +26,11 @@ export class TodoistComponent implements OnInit {
     'Create template for todoist',
   ];
 
-  constructor() { }
+  constructor(
+    private todoistService: TodoistService,
+    public dialog: MatDialog
+
+  ) { }
 
   ngOnInit(): void {
   }
@@ -37,6 +44,14 @@ export class TodoistComponent implements OnInit {
         event.previousIndex,
         event.currentIndex);
     }
+  }
+
+  public createTodoDialog(): void {
+    const dialogRef = this.dialog.open(CreateTodoDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

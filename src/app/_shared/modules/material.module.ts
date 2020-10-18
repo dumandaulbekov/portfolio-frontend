@@ -6,9 +6,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
-import {DragDropModule} from '@angular/cdk/drag-drop';
-
+import { MatListModule } from '@angular/material/list';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
     exports: [
         MatCardModule,
@@ -19,7 +19,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
         MatIconModule,
         MatSidenavModule,
         MatListModule,
-        DragDropModule
+        DragDropModule,
+        MatDialogModule
     ]
 })
 
