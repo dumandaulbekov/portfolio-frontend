@@ -1,21 +1,18 @@
 <form [formGroup]="postForm" (ngSubmit)="submitPostForm()">
     <mat-form-field>
-        <mat-label>Title</mat-label>
-        <input matInput type="text" formControlName="title">
+        <mat-label>Название</mat-label>
+        <input #title matInput type="text" formControlName="title">
+        <mat-hint align="end">{{title.value?.length || 0}}/200</mat-hint>
+        <mat-error align="end" *ngIf="postFormControls.title.errors?.required">Введите название для поста</mat-error>
+        <mat-error align="end" *ngIf="postFormControls.title.errors?.maxlength">Вы превысили отведенный лимит
+            {{200-title.value?.length}}</mat-error>
     </mat-form-field>
     <br>
 
     <mat-form-field>
-        <mat-label>Image</mat-label>
-
-        <textarea matInput #content formControlName="image"></textarea>
-    </mat-form-field>
-    <br>
-
-    <mat-form-field>
-        <mat-label>Content</mat-label>
-
+        <mat-label>Контент</mat-label>
         <textarea matInput type="text" formControlName="content"></textarea>
+        <mat-error align="end" *ngIf="postFormControls.content.errors?.required">Напишите что нибудь для вашего поста</mat-error>
     </mat-form-field>
 
     <button mat-button type="submit">Update</button>

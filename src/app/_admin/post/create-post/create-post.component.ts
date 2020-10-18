@@ -13,7 +13,6 @@ export class CreatePostComponent implements OnInit {
   public postForm: FormGroup;
   public postFormControls: {
     title: AbstractControl,
-    image: AbstractControl,
     content: AbstractControl,
   };
 
@@ -33,13 +32,11 @@ export class CreatePostComponent implements OnInit {
     this.postForm = this.formBuilder.group({
       title: [null, [Validators.required, Validators.maxLength(200)]],
       content: [null, [Validators.required]],
-      image: [null, [Validators.required]]
     });
 
     this.postFormControls = {
       title: this.postForm.get('title'),
       content: this.postForm.get('content'),
-      image: this.postForm.get('image'),
     };
   }
 
@@ -47,13 +44,14 @@ export class CreatePostComponent implements OnInit {
     if (this.postForm.valid && this.postForm.dirty) {
       const body: IPost = {
         title: this.postFormControls.title.value?.trim(),
-        image: this.postFormControls.image.value,
         content: this.postFormControls.content.value?.trim(),
         createdDate: new Date(),
         modifiedDate: new Date(),
       };
 
       this.postService.create(body).subscribe();
+
+      this.router.navigate(['/admin']);
     }
   }
 }
