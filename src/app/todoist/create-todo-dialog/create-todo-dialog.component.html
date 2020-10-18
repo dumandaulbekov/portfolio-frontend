@@ -1,3 +1,11 @@
-<p>create-todo-dialog works!</p>
+<form [formGroup]="todoForm" (ngSubmit)="submitTodoForm()">
+    <mat-form-field>
+        <mat-label>Задача</mat-label>
+        <input matInput type="text" formControlName="name">
+    </mat-form-field>
 
-<button (click)="submit()">submit</button>
+    <div mat-dialog-actions> 
+        <button mat-button type="submit" [disabled]="todoForm.invalid">Добавить задачу</button>
+        <button mat-button mat-dialog-close>Отмена</button>
+    </div>
+</form>

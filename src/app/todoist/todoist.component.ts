@@ -47,7 +47,9 @@ export class TodoistComponent implements OnInit {
   }
 
   public createTodoDialog(): void {
-    const dialogRef = this.dialog.open(CreateTodoDialogComponent);
+    const dialogRef = this.dialog.open(CreateTodoDialogComponent,{ 
+      width: '560px'
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
