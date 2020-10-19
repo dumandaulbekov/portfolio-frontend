@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -65,9 +66,10 @@ export class UpdatePostComponent implements OnInit {
         modifiedDate: new Date(),
       };
 
-      this.postService.update(body).subscribe();
-
-      this.router.navigate(['/admin']);
+      this.postService.update(body).subscribe({
+        next: () => this.router.navigate(['/admin']),
+        error: (error: HttpErrorResponse) => console.log('post edit error', error)
+      });
     }
   }
 }
