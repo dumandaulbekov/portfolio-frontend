@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IPost } from '../models/post.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
+
 export class PostService {
+
   constructor(
     private http: HttpClient
   ) { }
@@ -31,4 +31,5 @@ export class PostService {
   public delete(id: number): Observable<IPost> {
     return this.http.delete<IPost>(`${environment.PHP_POST_API}/delete.php/?id=${id}`);
   }
+
 }

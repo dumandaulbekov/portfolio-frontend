@@ -12,6 +12,7 @@ import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './posts/post/post.component';
 import { TodoistComponent } from './todoist/todoist.component';
 import { CreateTodoDialogComponent } from './todoist/create-todo-dialog/create-todo-dialog.component';
+import { EditTodoDialogComponent } from './todoist/edit-todo-dialog/edit-todo-dialog.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CreateTodoDialogComponent } from './todoist/create-todo-dialog/create-t
     PostComponent,
     TodoistComponent,
     CreateTodoDialogComponent,
+    EditTodoDialogComponent,
   ],
   imports: [
     BrowserModule,
