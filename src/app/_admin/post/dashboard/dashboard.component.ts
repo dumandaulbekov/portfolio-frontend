@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { IPost } from 'src/app/_shared/models/post.model';
 import { PostService } from 'src/app/_shared/services/post.service';
@@ -15,10 +16,10 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.postsService.getAll().subscribe((response) => {
-      this.posts = response;
+    this.postsService.getAll().subscribe({
+      next: (response) => this.posts = response,
+      error: (error: HttpErrorResponse) => console.log('post get all error', error)
     });
-
   }
 
   public remove(id: number): void {
@@ -26,5 +27,4 @@ export class DashboardComponent implements OnInit {
       this.posts = this.posts.filter((post) => post.id !== id);
     });
   }
-
 }

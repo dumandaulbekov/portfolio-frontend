@@ -2,23 +2,21 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Title</th>
-            <th>Created Date</th>
-            <th>Modified Date</th>
-            <th>Action</th>
+            <th>Название</th>
+            <th>Дата создания</th>
+            <th>Дата модификаций</th>
+            <th>Действия</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let post of posts; let idx = index">
-            <td>{{ idx + 1 }}</td>
-            <td>{{ post.title }}</td>
-            <td>{{ post.createdDate }}</td>
-            <td>{{ post.modifiedDate }}</td>
+        <tr *ngFor="let post of posts; let idx = index" class="cursor-pointer">
+            <td [routerLink]="['/post', post.id]">{{ idx + 1 }}</td>
+            <td [routerLink]="['/post', post.id]">{{ post.title }}</td>
+            <td [routerLink]="['/post', post.id]">{{ post.createdDate }}</td>
+            <td [routerLink]="['/post', post.id]">{{ post.modifiedDate }}</td>
             <td class="action">
-                <button mat-button [routerLink]="['/admin', 'update-post', post.id]">
-                    View
-                </button>
-                <button mat-button (click)="remove(post.id)">Remove</button>
+                <button mat-button [routerLink]="['/admin', 'update-post', post.id]">Изменить</button>
+                <button mat-button (click)="remove(post.id)">Удалить</button>
             </td>
         </tr>
     </tbody>
