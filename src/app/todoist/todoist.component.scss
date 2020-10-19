@@ -1,12 +1,24 @@
-  .cdk-drop-list { 
-      min-height: 60px;
-  }
+.cdk-drop-list {
+  min-height: 60px;
+}
 
-  .cdk-drag-placeholder {
-    opacity: 0;
-  }
-  
-  .cdk-drag-animating {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  }
-  
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.edit:hover {
+  color: #7f8c8d;
+}
+
+.delete:hover { 
+  color: #e74c3c;
+}
+
+.mat-icon-button { 
+  width: 30px;
+  height: 30px;
+}
