@@ -1,6 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ITodoist } from 'src/app/_shared/models/todoist.model';
 import { TodoistService } from 'src/app/_shared/services/todoist.service';
 
@@ -18,7 +19,7 @@ export class CreateTodoDialogComponent implements OnInit {
   constructor(
     private todoistService: TodoistService,
     private formBuilder: FormBuilder,
-    public dialog: MatDialog,
+    private readonly dialogRef: MatDialogRef<CreateTodoDialogComponent>
   ) {
     this.todoForm = this.formBuilder.group({
       name: [null, [Validators.required]],
@@ -43,9 +44,10 @@ export class CreateTodoDialogComponent implements OnInit {
         isFinished: false
       };
 
-      this.todoistService.create(body).subscribe();
-
-      this.dialog.closeAll();
+      this.todoistService.create(body).subscribe({
+        next: response => this.dialogRef.close(response),
+        error: (error: HttpErrorResponse) => console.log('error', error)
+      });
     }
   }
 }
