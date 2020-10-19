@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -49,9 +50,10 @@ export class CreatePostComponent implements OnInit {
         modifiedDate: new Date(),
       };
 
-      this.postService.create(body).subscribe();
-
-      this.router.navigate(['/admin']);
+      this.postService.create(body).subscribe({
+        next: () => this.router.navigate(['/posts']),
+        error: (error: HttpErrorResponse) => console.log('post create error', error)
+      });
     }
   }
 }
