@@ -1,5 +1,10 @@
-<div class="row">
-    <div class="col-md-3"></div>
+<div class="row mb-5">
+    <div class="col-md-3 mt-5">
+        <mat-selection-list [multiple]="false">
+            <mat-list-option [routerLink]="['/admin', 'create-post']">Создать новый пост</mat-list-option>
+            <mat-list-option [routerLink]="['/admin', 'post-dashboard']">Отобразить в виде таблицы</mat-list-option>
+        </mat-selection-list>
+    </div>
     <div class="col-md-5">
         <mat-card class="mt-5" *ngFor="let post of posts; let idx = index">
             <mat-card-content>
@@ -8,7 +13,8 @@
                 </mat-card-title>
                 <mat-card-subtitle>{{post.modifiedDate}}</mat-card-subtitle>
                 <hr>
-                <p [routerLink]="['/post', post.id]" class="cursor-pointer mb-3">{{post.content.substring(0,250)}}...
+                <p [routerLink]="['/post', post.id]" class="cursor-pointer mb-3">
+                    {{post.content.length >= 250 ? post.content.substring(0,250) + '...' : post.content}}
                 </p>
                 <div class="mb-0 d-flex justify-content-between">
                     <p class="">design</p>
@@ -22,5 +28,5 @@
             </mat-card-content>
         </mat-card>
     </div>
-    <div class="col-md-3"></div>
+    <div class="col-md-3 mt-5"></div>
 </div>
