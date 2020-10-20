@@ -16,7 +16,7 @@ export class PostService {
   }
 
   public getById(id: number): Observable<IPost> {
-    return this.http.get<IPost>(`${environment.PHP_POST_API}/getById.php/?id=${id}`);
+    return this.http.get<IPost>(`${environment.PHP_POST_API}/getById.php?id=${id}`);
   }
 
   public create(body: IPost): Observable<IPost> {
@@ -28,7 +28,7 @@ export class PostService {
   }
 
   public delete(id: number): Observable<IPost> {
-    return this.http.delete<IPost>(`${environment.PHP_POST_API}/delete.php/?id=${id}`);
+    return this.http.delete<IPost>(`${environment.PHP_POST_API}/delete.php?id=${id}`);
   }
 
 }

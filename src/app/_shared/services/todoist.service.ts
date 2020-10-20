@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ITodoChangeBoardType, ITodoChangeName, ITodoFinished, ITodoist } from '../models/todoist.model';
+import { ITodoChangeBoardType, ITodoChangeName, ITodoist } from '../models/todoist.model';
 
 @Injectable({ providedIn: 'root' })
 export class TodoistService {
@@ -27,12 +27,12 @@ export class TodoistService {
         return this.http.put<ITodoChangeBoardType>(`${environment.PHP_TODOIST_API}/updateBoardType.php`, body);
     }
 
-    public getById(): Observable<ITodoist> {
-        return this.http.get<ITodoist>(`${environment.PHP_TODOIST_API}/getById.php`);
-    }
+    // public getById(): Observable<ITodoist> {
+    //     return this.http.get<ITodoist>(`${environment.PHP_TODOIST_API}/getById.php`);
+    // }
 
     public delete(id: number): Observable<void> {
-        return this.http.delete<void>(`${environment.PHP_TODOIST_API}/delete.php/?id=${id}`);
+        return this.http.delete<void>(`${environment.PHP_TODOIST_API}/delete.php?id=${id}`);
     }
 
 }
