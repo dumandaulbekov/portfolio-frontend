@@ -5,7 +5,6 @@ import { environment } from 'src/environments/environment';
 import { ITodoChangeBoardType, ITodoChangeName, ITodoFinished, ITodoist } from '../models/todoist.model';
 
 @Injectable({ providedIn: 'root' })
-
 export class TodoistService {
 
     constructor(
@@ -18,10 +17,6 @@ export class TodoistService {
 
     public create(body: ITodoist): Observable<ITodoist> {
         return this.http.post<ITodoist>(`${environment.PHP_TODOIST_API}/create.php`, body);
-    }
-
-    public finished(body: ITodoFinished[]): Observable<ITodoFinished[]> {
-        return this.http.put<ITodoFinished[]>(`${environment.PHP_TODOIST_API}/finished.php`, body);
     }
 
     public editName(body: ITodoChangeName): Observable<ITodoChangeName> {

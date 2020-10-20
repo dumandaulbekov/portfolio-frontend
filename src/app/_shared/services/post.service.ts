@@ -5,7 +5,6 @@ import { environment } from 'src/environments/environment';
 import { IPost } from '../models/post.model';
 
 @Injectable({ providedIn: 'root' })
-
 export class PostService {
 
   constructor(

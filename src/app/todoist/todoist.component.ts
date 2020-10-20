@@ -59,8 +59,8 @@ export class TodoistComponent implements OnInit {
             boardType: 'todo'
           };
 
-          this.todoistService.editBoardType(update).subscribe((x) => {
-            todo[`boardType`] = x.boardType;
+          this.todoistService.editBoardType(update).subscribe((value) => {
+            todo[`boardType`] = value.boardType;
           });
         }
 
@@ -71,8 +71,8 @@ export class TodoistComponent implements OnInit {
             boardType: 'progress'
           };
 
-          this.todoistService.editBoardType(update).subscribe((x) => {
-            todo[`boardType`] = x.boardType;
+          this.todoistService.editBoardType(update).subscribe((value) => {
+            todo[`boardType`] = value.boardType;
           });
         }
 
@@ -83,8 +83,8 @@ export class TodoistComponent implements OnInit {
             boardType: 'done'
           };
 
-          this.todoistService.editBoardType(update).subscribe((x) => {
-            todo[`boardType`] = x.boardType;
+          this.todoistService.editBoardType(update).subscribe((value) => {
+            todo[`boardType`] = value.boardType;
           });
         }
       });
@@ -162,20 +162,4 @@ export class TodoistComponent implements OnInit {
     });
   }
 
-  public finishedTodo(selected: ITodoFinished[]): void {
-    const todoist: ITodoFinished[] = [];
-
-    selected.forEach((todo) => {
-      const isFinishedValue: ITodoFinished = todo[`value`];
-      todoist.push({
-        id: isFinishedValue.id,
-        isFinished: true,
-        modifiedDate: new Date()
-      });
-    });
-
-    this.todoistService.finished(todoist).subscribe((x) => {
-      console.log('x', x);
-    });
-  }
 }
