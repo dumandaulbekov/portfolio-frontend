@@ -14,13 +14,14 @@
             </mat-form-field>
             <br>
 
-            <mat-form-field>
+            <quill-editor formControlName="content"></quill-editor>
+            <!-- <mat-form-field>
                 <mat-label>Контент</mat-label>
                 <textarea matInput type="text" formControlName="content"></textarea>
                 <mat-error align="end" *ngIf="postFormControls.content.errors?.required">
                     Напишите что нибудь для вашего поста
                 </mat-error>
-            </mat-form-field>
+            </mat-form-field> -->
 
             <div class="d-flex justify-content-between">
                 <button mat-button type="button" [routerLink]="['/posts']">Отмена</button>
