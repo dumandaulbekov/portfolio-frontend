@@ -2,7 +2,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ITodoChangeName, ITodoFinished, ITodoist } from '../_shared/models/todoist.model';
+import { ITodoChangeBoardType, ITodoChangeName, ITodoFinished, ITodoist } from '../_shared/models/todoist.model';
 import { TodoistService } from '../_shared/services/todoist.service';
 import { CreateTodoDialogComponent } from './create-todo-dialog/create-todo-dialog.component';
 import { EditTodoDialogComponent } from './edit-todo-dialog/edit-todo-dialog.component';
@@ -49,10 +49,44 @@ export class TodoistComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      console.log(event.previousContainer.data);
+      const todo = event.previousContainer.data[event.previousIndex];
 
-      event.container.data.forEach((todo) => {
-        const x = todo[`boardType`];
+      event.container.data.map((x) => {
+        if (x[`boardType`] === 'todo') {
+          const update: ITodoChangeBoardType = {
+            id: todo[`id`],
+            modifiedDate: new Date(),
+            boardType: 'todo'
+          };
+
+          this.todoistService.editBoardType(update).subscribe((x) => {
+            todo[`boardType`] = x.boardType;
+          });
+        }
+
+        if (x[`boardType`] === 'progress') {
+          const update: ITodoChangeBoardType = {
+            id: todo[`id`],
+            modifiedDate: new Date(),
+            boardType: 'progress'
+          };
+
+          this.todoistService.editBoardType(update).subscribe((x) => {
+            todo[`boardType`] = x.boardType;
+          });
+        }
+
+        if (x[`boardType`] === 'done') {
+          const update: ITodoChangeBoardType = {
+            id: todo[`id`],
+            modifiedDate: new Date(),
+            boardType: 'done'
+          };
+
+          this.todoistService.editBoardType(update).subscribe((x) => {
+            todo[`boardType`] = x.boardType;
+          });
+        }
       });
 
       transferArrayItem(event.previousContainer.data,

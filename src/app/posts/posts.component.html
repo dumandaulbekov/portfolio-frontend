@@ -13,11 +13,11 @@
                 </mat-card-title>
                 <mat-card-subtitle>{{post.modifiedDate}}</mat-card-subtitle>
                 <hr>
-                <p [routerLink]="['/post', post.id]" class="cursor-pointer mb-3">
-                    {{post.content.length >= 250 ? post.content.substring(0,250) + '...' : post.content}}
-                </p>
+                    <quill-view-html [routerLink]="['/post', post.id]" class="cursor-pointer mb-3"
+                        [content]="post.content.length >= 250 ? post.content.substring(0,250) + '...' : post.content">
+                    </quill-view-html>
                 <div class="mb-0 d-flex justify-content-between">
-                    <p class="">design</p>
+                    <p class="">tag</p>
 
                     <p class="text-right mb-0 font-small font-weight-bold">
                         <a [routerLink]="['/post', post.id]">read more

@@ -6,6 +6,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { MaterialModule } from '../_shared/modules/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './post/dashboard/dashboard.component';
+import { QuillModule } from 'ngx-quill';
 
 
 @NgModule({
@@ -15,7 +16,11 @@ import { DashboardComponent } from './post/dashboard/dashboard.component';
     AdminRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    QuillModule.forRoot()
+  ],
+  exports: [
+    QuillModule
   ]
 })
 export class AdminModule { }

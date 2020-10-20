@@ -67,7 +67,7 @@ export class UpdatePostComponent implements OnInit {
       };
 
       this.postService.update(body).subscribe({
-        next: () => this.router.navigate(['/admin']),
+        next: () => this.router.navigate(['/post', this.post.id]),
         error: (error: HttpErrorResponse) => console.log('post edit error', error)
       });
     }

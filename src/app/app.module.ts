@@ -13,6 +13,7 @@ import { PostComponent } from './posts/post/post.component';
 import { TodoistComponent } from './todoist/todoist.component';
 import { CreateTodoDialogComponent } from './todoist/create-todo-dialog/create-todo-dialog.component';
 import { EditTodoDialogComponent } from './todoist/edit-todo-dialog/edit-todo-dialog.component';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { EditTodoDialogComponent } from './todoist/edit-todo-dialog/edit-todo-di
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    QuillModule.forRoot()
+
   ],
   providers: [],
   bootstrap: [AppComponent]

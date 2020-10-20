@@ -19,6 +19,9 @@ $portfolio-frontend-theme: mat-light-theme(
 
 @include angular-material-theme($portfolio-frontend-theme);
 
+@import "~quill/dist/quill.core.css";
+@import "~quill/dist/quill.snow.css";
+
 html,
 body {
   height: 100%;
