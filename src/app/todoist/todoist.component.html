@@ -10,15 +10,10 @@
                 <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
                     [cdkDropListConnectedTo]="[testList, doneList]" (cdkDropListDropped)="drop($event)">
                     <div *ngFor="let todo of todo" class="d-flex">
-                        <mat-list-option cdkDrag [value]="todo">
+                        <mat-list-option cdkDrag [value]="todo" (click)="editTodoDialog(todo, todo.boardType)">
                             {{todo.name}}
                         </mat-list-option>
 
-                        <button mat-icon-button class="edit" (click)="editTodoDialog(todo, todo.boardType)">
-                            <mat-icon>
-                                edit
-                            </mat-icon>
-                        </button>
                         <button mat-icon-button class="delete" (click)="deleteTodo(todo.id, todo.boardType)">
                             <mat-icon>
                                 clear
@@ -47,15 +42,10 @@
                 <div cdkDropList #testList="cdkDropList" [cdkDropListData]="progress"
                     [cdkDropListConnectedTo]="[todoList, doneList]" (cdkDropListDropped)="drop($event)">
                     <div *ngFor="let todo of progress" class="d-flex">
-                        <mat-list-option cdkDrag [value]="todo">
+                        <mat-list-option cdkDrag [value]="todo" (click)="editTodoDialog(todo, todo.boardType)">
                             {{todo.name}}
                         </mat-list-option>
-
-                        <button mat-icon-button class="edit" (click)="editTodoDialog(todo, todo.boardType)">
-                            <mat-icon>
-                                edit
-                            </mat-icon>
-                        </button>
+                 
                         <button mat-icon-button class="delete" (click)="deleteTodo(todo.id, todo.boardType)">
                             <mat-icon>
                                 clear
@@ -82,15 +72,10 @@
                 <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
                     [cdkDropListConnectedTo]="[todoList, testList]" (cdkDropListDropped)="drop($event)">
                     <div *ngFor="let todo of done" class="d-flex">
-                        <mat-list-option cdkDrag [value]="todo" class="done">
+                        <mat-list-option cdkDrag [value]="todo" class="done" (click)="editTodoDialog(todo, todo.boardType)">
                             {{todo.name}}
                         </mat-list-option>
 
-                        <button mat-icon-button class="edit" (click)="editTodoDialog(todo, todo.boardType)">
-                            <mat-icon>
-                                edit
-                            </mat-icon>
-                        </button>
                         <button mat-icon-button class="delete" (click)="deleteTodo(todo.id, todo.boardType)">
                             <mat-icon>
                                 clear
