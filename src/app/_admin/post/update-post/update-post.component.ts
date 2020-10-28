@@ -63,7 +63,6 @@ export class UpdatePostComponent implements OnInit {
         id: this.post.id,
         title: this.postFormControls.title.value?.trim(),
         content: this.postFormControls.content.value?.trim(),
-        modifiedDate: new Date(),
       };
 
       this.postService.update(body).subscribe({

@@ -46,8 +46,6 @@ export class CreatePostComponent implements OnInit {
       const body: IPost = {
         title: this.postFormControls.title.value?.trim(),
         content: this.postFormControls.content.value?.trim(),
-        createdDate: new Date(),
-        modifiedDate: new Date(),
       };
 
       this.postService.create(body).subscribe({
