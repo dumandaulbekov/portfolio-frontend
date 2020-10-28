@@ -12,27 +12,27 @@ export class TodoistService {
     ) { }
 
     public getAll(): Observable<ITodoist[]> {
-        return this.http.get<ITodoist[]>(`${environment.PHP_TODOIST_API}/getAll.php`);
+        return this.http.get<ITodoist[]>(`${environment.PHP_TODO_API}/getAll.php`);
+    }
+
+    public getById(id: number): Observable<ITodoist> {
+        return this.http.get<ITodoist>(`${environment.PHP_TODO_API}/getById.php?id=${id}`);
     }
 
     public create(body: ITodoist): Observable<ITodoist> {
-        return this.http.post<ITodoist>(`${environment.PHP_TODOIST_API}/create.php`, body);
+        return this.http.post<ITodoist>(`${environment.PHP_TODO_API}/create.php`, body);
     }
 
     public editName(body: ITodoChangeName): Observable<ITodoChangeName> {
-        return this.http.put<ITodoChangeName>(`${environment.PHP_TODOIST_API}/updateTodo.php`, body);
+        return this.http.put<ITodoChangeName>(`${environment.PHP_TODO_API}/updateTodo.php`, body);
     }
 
     public editBoardType(body: ITodoChangeBoardType): Observable<ITodoChangeBoardType> {
-        return this.http.put<ITodoChangeBoardType>(`${environment.PHP_TODOIST_API}/updateBoardType.php`, body);
+        return this.http.put<ITodoChangeBoardType>(`${environment.PHP_TODO_API}/updateBoardType.php`, body);
     }
 
-    // public getById(): Observable<ITodoist> {
-    //     return this.http.get<ITodoist>(`${environment.PHP_TODOIST_API}/getById.php`);
-    // }
-
-    public delete(id: number): Observable<void> {
-        return this.http.delete<void>(`${environment.PHP_TODOIST_API}/delete.php?id=${id}`);
+    public delete(id: number): Observable<ITodoist> {
+        return this.http.put<ITodoist>(`${environment.PHP_TODO_API}/delete.php`, id);
     }
 
 }

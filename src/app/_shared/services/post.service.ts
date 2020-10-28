@@ -28,7 +28,7 @@ export class PostService {
   }
 
   public delete(id: number): Observable<IPost> {
-    return this.http.delete<IPost>(`${environment.PHP_POST_API}/delete.php?id=${id}`);
+    return this.http.put<IPost>(`${environment.PHP_POST_API}/delete.php`, id);
   }
 
 }
