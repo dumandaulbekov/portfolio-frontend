@@ -37,15 +37,12 @@ export class CreateTodoDialogComponent implements OnInit {
     if (this.todoForm.valid) {
       const body: ITodoist = {
         name: this.todoFormControls.name.value?.trim(),
-        createdDate: new Date(),
-        modifiedDate: new Date(),
         scheduleDate: new Date(),
         boardType: 'todo',
-        isFinished: false
       };
 
       this.todoistService.create(body).subscribe({
-        next: response => this.dialogRef.close(response),
+        next: (response: ITodoist) => this.dialogRef.close(response),
         error: (error: HttpErrorResponse) => console.log('error', error)
       });
     }

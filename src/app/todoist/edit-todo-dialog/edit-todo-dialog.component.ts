@@ -41,7 +41,6 @@ export class EditTodoDialogComponent implements OnInit {
       const body: ITodoChangeName = {
         id: this.dialogData.id,
         name: this.todoFormControls.name.value?.trim(),
-        modifiedDate: new Date(),
       };
 
       this.todoistService.editName(body).subscribe({
